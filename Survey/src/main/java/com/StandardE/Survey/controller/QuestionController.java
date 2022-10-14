@@ -1,39 +1,29 @@
 package com.StandardE.Survey.controller;
 
-import com.StandardE.Survey.entity.SurveyQuestion;
-import com.StandardE.Survey.service.QuestionService;
+import com.StandardE.Survey.dto.SurveyQuestion;
+import com.StandardE.Survey.repository.SurveyQuestionDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
 @Component
 public class QuestionController {
 
+
     @Autowired
-    private QuestionService questionService;
+    private SurveyQuestionDaoImpl surveyQuestionDao;
 
-    @PostMapping("/saveQuestion")
-    public SurveyQuestion addQuestion(@RequestBody SurveyQuestion surveyQuestion){
-        return questionService.saveQuestion(surveyQuestion);
-    }
 
-    @PostMapping("/saveQuestions")
-    public List<SurveyQuestion> addQuestions(@RequestBody List<SurveyQuestion> surveyQuestions){
-        return questionService.saveQuestions(surveyQuestions);
-    }
+//    public void getQuestionsBySchemaId(int id){
+//        List<SurveyQuestion> surveyQuestion = surveyQuestionDao.getQuestionsBySchemaId(1);
+//        System.out.println(Arrays.asList(surveyQuestion));
+//    }
 
-    @GetMapping("/questions")
-    public List<SurveyQuestion> findAllQuestions(){
-        return questionService.getQuestion();
-    }
 
-    @GetMapping("/question/{id}")
-    public SurveyQuestion getQuestionById(@PathVariable int id){
-        return questionService.getQuestionById(id);
-    }
 
 
 }
